@@ -9,3 +9,6 @@ select * from users;
     select id from users;
     -- getAllColumnAsList --> List --> size  --> EXPECTED
     -- getAllColumnAsList --> Set  --> size  --> EXPECTED
+
+select count(*) from book_borrow
+where is_returned = 0;

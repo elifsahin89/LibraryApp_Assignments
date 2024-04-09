@@ -6,6 +6,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.List;
+
 public class UserStepDefs {
     String actualUserCount;
     @Given("Establish the database connection")
@@ -47,4 +49,23 @@ public class UserStepDefs {
         System.out.println("-----------------------------------------");
 
     }
+
+    @When("Execute query to get all columns")
+    public void execute_query_to_get_all_columns() {
+
+        DB_Util.runQuery("select * from users");
+
+    }
+
+
+    @Then("verify the below columns are listed in result")
+    public void verify_the_below_columns_are_listed_in_result(List<String> expectedList) {
+
+        List<String> actualList = DB_Util.getAllColumnNamesAsList();
+
+        Assert.assertEquals(actualList,expectedList);
+
+
+    }
+
 }
