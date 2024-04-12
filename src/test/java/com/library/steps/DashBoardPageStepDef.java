@@ -34,7 +34,8 @@ public class DashBoardPageStepDef {
     @Then("borrowed books number information must match with DB")
     public void borrowed_books_number_information_must_match_with_db() {
 
-        DB_Util.runQuery("select count(*) from book_borrow where is_returned=0");
+        DB_Util.runQuery("select count(*) from book_borrow\n" +
+                "    where is_returned = 0");
         String expectedResultfromDB = DB_Util.getFirstRowFirstColumn();
 
         Assert.assertEquals(actualResultfromUI,expectedResultfromDB);
